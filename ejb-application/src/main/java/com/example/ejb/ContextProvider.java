@@ -3,11 +3,14 @@ package com.example.ejb;
 import java.security.Principal;
 
 import jakarta.annotation.Resource;
+import jakarta.annotation.security.PermitAll;
 import jakarta.ejb.SessionContext;
 import jakarta.ejb.Stateless;
 
+import org.jboss.ejb3.annotation.SecurityDomain;
 import org.jboss.logging.Logger;
 
+@SecurityDomain("web-application-1.0-SNAPSHOT.war")
 @Stateless
 public class ContextProvider {
 
@@ -16,6 +19,7 @@ public class ContextProvider {
     @Resource
     public SessionContext sessionContext;
 
+    @PermitAll
     public SessionContext getSessionContext() {
         final Principal principal = sessionContext.getCallerPrincipal();
 
