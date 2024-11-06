@@ -5,19 +5,23 @@ import java.security.Principal;
 import jakarta.annotation.Resource;
 import jakarta.ejb.SessionContext;
 import jakarta.ejb.Stateless;
-import jakarta.annotation.security.PermitAll;
 
-import org.jboss.ejb3.annotation.SecurityDomain;
+import org.jboss.logging.Logger;
 
 @Stateless
-@SecurityDomain("web-application-1.0-SNAPSHOT.war")
 public class ContextProvider {
+
+    private static final Logger LOG = Logger.getLogger(ContextProvider.class);
 
     @Resource
     public SessionContext sessionContext;
 
-    @PermitAll
     public SessionContext getSessionContext() {
+        final Principal principal = sessionContext.getCallerPrincipal();
+
+        LOG.debugf("EJB Principal class %s", principal.getClass());
+        LOG.debugf("EJB Principal username %s", principal.getName());
+
         return this.sessionContext;
     }
 
@@ -25,7 +29,6 @@ public class ContextProvider {
         this.sessionContext = sessionContext;
     }
     
-    @PermitAll
     public Principal getPrincipal() {
         return sessionContext.getCallerPrincipal();
     } 

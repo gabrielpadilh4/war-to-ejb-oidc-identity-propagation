@@ -15,43 +15,41 @@
         <maven.compiler.target>17</maven.compiler.target>
         <maven.compiler.source>17</maven.compiler.source>
 
+        <version.jboss-logging>3.3.1.Final-redhat-1</version.jboss-logging>
+        <version.jboss-ejb3-ext-api>2.3.0.Final-redhat-00001</version.jboss-ejb3-ext-api>
+        <version.jakarta.enterprise.cdi-api>4.0.1.redhat-00001</version.jakarta.enterprise.cdi-api>
+        <version.jakarta.ejb-api>4.0.1.redhat-00001</version.jakarta.ejb-api>
+        <version.jakarta.annotation-api>2.1.1.redhat-00003</version.jakarta.annotation-api>
 
     </properties>
 
     <dependencies>
 
         <dependency>
-            <groupId>org.jboss.ejb3</groupId>
-            <artifactId>jboss-ejb3-ext-api</artifactId>
-            <version>2.4.0.Final</version>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging</artifactId>
+            <version>${version.jboss-logging}</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
-            <groupId>jakarta.servlet</groupId>
-            <artifactId>jakarta.servlet-api</artifactId>
-            <version>5.0.0</version>
+            <groupId>org.jboss.ejb3</groupId>
+            <artifactId>jboss-ejb3-ext-api</artifactId>
+            <version>${version.jboss-ejb3-ext-api}</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>jakarta.enterprise</groupId>
             <artifactId>jakarta.enterprise.cdi-api</artifactId>
-            <version>4.1.0</version>
+            <version>${version.jakarta.enterprise.cdi-api}</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>jakarta.ejb</groupId>
             <artifactId>jakarta.ejb-api</artifactId>
-            <version>4.0.1.redhat-00001</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>jakarta.el</groupId>
-            <artifactId>jakarta.el-api</artifactId>
-            <version>6.0.0</version>
+            <version>${version.jakarta.ejb-api}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -59,20 +57,6 @@
             <groupId>jakarta.annotation</groupId>
             <artifactId>jakarta.annotation-api</artifactId>
             <version>2.1.1.redhat-00003</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jboss.logging</groupId>
-            <artifactId>jboss-logging</artifactId>
-            <version>3.3.1.Final-redhat-1</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-            <version>2.12.1.redhat-00001</version>
             <scope>provided</scope>
         </dependency>
 

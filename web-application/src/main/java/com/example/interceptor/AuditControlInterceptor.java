@@ -19,7 +19,7 @@ import jakarta.interceptor.InvocationContext;
 @Interceptor
 @Priority(Interceptor.Priority.APPLICATION)
 public class AuditControlInterceptor implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
 
     private static final Logger LOG = Logger.getLogger(AuditControlInterceptor.class);
@@ -35,7 +35,9 @@ public class AuditControlInterceptor implements Serializable {
     public Object interceptMethod(InvocationContext invocationContext) throws Exception {
         LOG.debug("Executing interceptor AuditControlInterceptor.....");
 
-        final Principal principal = contextProvider.getPrincipal();
+        final SessionContext sessionContext = contextProvider.getSessionContext();
+
+        final Principal principal = sessionContext.getCallerPrincipal();
 
         LOG.debugf("Principal class %s", principal.getClass());
         LOG.debugf("Principal username %s", principal.getName());
